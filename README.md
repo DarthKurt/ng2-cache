@@ -18,7 +18,7 @@ import { Component }        from '@angular/core';
 import {
          CacheService,
          CacheStoragesEnum
-       }                    from 'ng2-cache-service/ng2-cache-service';
+       }                    from 'ng2-cache-service';
 
 declare var BUILD_VERSION: string;
 
@@ -92,7 +92,7 @@ import {
          CacheService,
          CacheStorageAbstract,
          CacheLocalStorage
-       }                        from 'ng2-cache-service/ng2-cache-service';
+       }                        from 'ng2-cache-service';
 
 @Component({
     selector: 'some-selector',
