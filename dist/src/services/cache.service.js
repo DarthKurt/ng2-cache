@@ -11,15 +11,16 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var __param = (this && this.__param) || function (paramIndex, decorator) {
     return function (target, key) { decorator(target, key, paramIndex); }
 };
-var core_1 = require('@angular/core');
-var cache_storage_abstract_service_1 = require('./storage/cache-storage-abstract.service');
-var cache_session_storage_service_1 = require('./storage/session-storage/cache-session-storage.service');
-var cache_local_storage_service_1 = require('./storage/local-storage/cache-local-storage.service');
-var cache_memory_service_1 = require('./storage/memory/cache-memory.service');
+Object.defineProperty(exports, "__esModule", { value: true });
+var core_1 = require("@angular/core");
+var cache_storage_abstract_service_1 = require("./storage/cache-storage-abstract.service");
+var cache_session_storage_service_1 = require("./storage/session-storage/cache-session-storage.service");
+var cache_local_storage_service_1 = require("./storage/local-storage/cache-local-storage.service");
+var cache_memory_service_1 = require("./storage/memory/cache-memory.service");
 var CACHE_PREFIX = 'CacheService';
 var DEFAULT_STORAGE = 1 /* SESSION_STORAGE */;
 var DEFAULT_ENABLED_STORAGE = 2 /* MEMORY */;
-var CacheService = (function () {
+var CacheService = CacheService_1 = (function () {
     function CacheService(_storage) {
         this._storage = _storage;
         /**
@@ -117,7 +118,7 @@ var CacheService = (function () {
      * @returns {CacheService}
      */
     CacheService.prototype.useStorage = function (type) {
-        var service = new CacheService(this._initStorage(type));
+        var service = new CacheService_1(this._initStorage(type));
         service.setGlobalPrefix(this._getCachePrefix());
         return service;
     };
@@ -228,7 +229,7 @@ var CacheService = (function () {
      * @private
      */
     CacheService.prototype._validateStorageValue = function (value) {
-        return value.options.expires > Date.now();
+        return !!value.options.expires && value.options.expires > Date.now();
     };
     /**
      * check if its system cache key
@@ -266,11 +267,12 @@ var CacheService = (function () {
     CacheService.prototype._tagsStorageKey = function () {
         return 'CacheService_tags';
     };
-    CacheService = __decorate([
-        core_1.Injectable(),
-        __param(0, core_1.Optional()), 
-        __metadata('design:paramtypes', [cache_storage_abstract_service_1.CacheStorageAbstract])
-    ], CacheService);
     return CacheService;
 }());
+CacheService = CacheService_1 = __decorate([
+    core_1.Injectable(),
+    __param(0, core_1.Optional()),
+    __metadata("design:paramtypes", [cache_storage_abstract_service_1.CacheStorageAbstract])
+], CacheService);
 exports.CacheService = CacheService;
+var CacheService_1;

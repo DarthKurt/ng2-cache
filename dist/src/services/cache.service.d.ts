@@ -47,7 +47,9 @@ export declare class CacheService {
      * @param tag
      * @returns {Array}
      */
-    getTagData(tag: string): {};
+    getTagData(tag: string): {
+        [key: string]: any;
+    };
     /**
      * Create a new instance of cache with needed storage
      * @param type

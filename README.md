@@ -14,11 +14,8 @@ Usage:
 
 ```typescript
 
-import { Component }        from '@angular/core';
-import {
-         CacheService,
-         CacheStoragesEnum
-       }                    from 'ng2-cache-service';
+import { Component }    from '@angular/core';
+import { CacheService } from 'ng2-cache-service';
 
 declare var BUILD_VERSION: string;
 
@@ -64,42 +61,24 @@ export class ExampleComponent {
         //get all data related to tag "tag" :
         // {'key' => 'key data', ...}
         this._cacheService.getTagData('tag');
-        
-        //change storage (returns new instance of service with needed storage)
-        this._cacheService.useStorage(CacheStoragesEnum.LOCAL_STORAGE);
 
     }
 }
 
 ```
 
-By default service store data in session storage, you could select one of storages:
- - session storage
- - local storage
- - memory
-
-If current storage is not available - service will choose memory storage.
+By default service store data in session storage, you could select local storage
 
 To change storage to local storage:
 
 ```typescript
 
-import {
-         Component,
-         provide
-       }                        from 'angular2/core';
-import {
-         CacheService,
-         CacheStorageAbstract,
-         CacheLocalStorage
-       }                        from 'ng2-cache-service';
+import { NgModule }                  from 'angular2/core';
+import { LocalStorageServiceModule } from 'ng2-cache-service';
 
-@Component({
-    selector: 'some-selector',
-    template: '<div>Template</div>',
-    providers: [
-        CacheService,
-        {provide: CacheStorageAbstract, useClass:CacheLocalStorage}
+@NgModule({
+    imports: [
+        LocalStorageServiceModule
     ]
 })
 
@@ -108,6 +87,5 @@ import {
 ## License
 ISC © [Evgeny Popodyanets](https://github.com/DarthKurt)
 
-Originally forked from
-ISC © [Romanov Evgeny](https://github.com/Jackson88)
+Originally forked from © [Romanov Evgeny](https://github.com/Jackson88)
 
