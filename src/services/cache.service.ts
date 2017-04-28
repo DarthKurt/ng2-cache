@@ -103,7 +103,7 @@ export class CacheService {
      */
     public getTagData(tag: string) {
         let tags = this.get(this._tagsStorageKey()) || {},
-            result = {};
+            result : {[key: string]: any} = {};
         if (tags[tag]) {
             tags[tag].forEach((key: string) => {
                 let data = this.get(this._fromStorageKey(key));
@@ -242,7 +242,7 @@ export class CacheService {
      * @private
      */
     private _validateStorageValue(value: StorageValueInterface) {
-        return value.options.expires > Date.now();
+        return !!value.options.expires && value.options.expires > Date.now();
     }
 
     /**

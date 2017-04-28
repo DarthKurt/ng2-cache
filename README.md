@@ -99,7 +99,7 @@ import {
     template: '<div>Template</div>',
     providers: [
         CacheService,
-        provide(CacheStorageAbstract, { useClass: CacheLocalStorage })
+        {provide: CacheStorageAbstract, useClass:CacheLocalStorage}
     ]
 })
 
